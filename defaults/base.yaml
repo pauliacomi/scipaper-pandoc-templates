@@ -1,0 +1,7 @@
+verbosity: INFO
+
+# none, references, or javascript
+email-obfuscation: references
+
+# accept, reject, or all
+track-changes: all
