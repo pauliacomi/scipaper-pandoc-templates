@@ -49,6 +49,13 @@
     $-- (2.7.2 is the default MathJax version as of Pandoc 2.2.1.)
     <script data-external="1"
       src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Ajax.config.path["mhchem"] = "https://cdnjs.cloudflare.com/ajax/libs/mathjax-mhchem/3.3.2";
+      MathJax.Ajax.config.path['myExt']  = 'https://rawgit.com/burnpanck/MathJax-third-party-extensions/master';
+      MathJax.Hub.Config({
+        TeX: { extensions: ["AMSmath.js","AMSsymbols.js","[myExt]/siunitx/unpacked/siunitx.js","[mhchem]/mhchem.js", "color.js"] }
+      });
+    </script>
     $else$
     $math$
     $endif$
@@ -99,25 +106,25 @@
           $endif$
           <p class="author-list">
             $for(author)$
-              $if(author.last)$ $-- not working!
-                and 
+            $if(author.last)$ $-- not working!
+            and
+            $endif$
+            <span property="author" typeof="Person">$author.name$</span>
+            <sup>
+              $if(author.correspondence)$
+              $if(author.email)$<a href="mailto:$author.email$">✉</a> $endif$
               $endif$
-                <span property="author" typeof="Person">$author.name$</span>
-                <sup>
-                  $if(author.correspondence)$
-                    $if(author.email)$<a href="mailto:$author.email$">✉</a> $endif$
-                  $endif$
-                  $for(author.institute_indices)$
-                    $author.institute_indices$
-                    $sep$,
-                  $endfor$
-                  $if(author.equal_contributor)$,
-                    $if(equal_contributor_symbol)$
-                      $equal_contributor_symbol$
-                    $else$*
-                    $endif$
-                  $endif$
-                </sup>$sep$,
+              $for(author.institute_indices)$
+              $author.institute_indices$
+              $sep$,
+              $endfor$
+              $if(author.equal_contributor)$,
+              $if(equal_contributor_symbol)$
+              $equal_contributor_symbol$
+              $else$*
+              $endif$
+              $endif$
+            </sup>$sep$,
             $endfor$
           </p>
           <div class="author-affiliations">
@@ -143,7 +150,7 @@
           </div>
 
           $if(abstract)$
-            <span class="abstract" property="description">$abstract$</span>
+          <span class="abstract" property="description">$abstract$</span>
           $endif$
           $if(doi)$<p><a href="https://doi.org/$doi$">doi: $doi$</a></p>$endif$
 
@@ -158,4 +165,5 @@
       </div>
     </div>
   </body>
-</html>
+
+  </html>
