@@ -46,14 +46,15 @@
     $if(mathjax)$
     $-- MathJax is handled specially. We need to add the data-external attribute
     $-- so it doesn't get inlined (and thus broken) by the --self-contained option.
-    $-- (2.7.2 is the default MathJax version as of Pandoc 2.2.1.)
-    <script data-external="1"
-      src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full"></script>
+    <script type="text/javascript" id="MathJax-script" async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
     <script type="text/x-mathjax-config">
       MathJax.Ajax.config.path["mhchem"] = "https://cdnjs.cloudflare.com/ajax/libs/mathjax-mhchem/3.3.2";
-      MathJax.Ajax.config.path['myExt']  = 'https://rawgit.com/burnpanck/MathJax-third-party-extensions/master';
       MathJax.Hub.Config({
-        TeX: { extensions: ["AMSmath.js","AMSsymbols.js","[myExt]/siunitx/unpacked/siunitx.js","[mhchem]/mhchem.js", "color.js"] }
+        TeX: {
+          extensions: ["[mhchem]/mhchem.js"]
+        }
       });
     </script>
     $else$
