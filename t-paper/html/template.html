@@ -165,7 +165,17 @@
         </article>
       </div>
     </div>
+
+  /* Image display zoom modal */
+  <div id="img-modal" class="img-modal" onclick="this.style.display='none'">
+    <span class="button">&times;</span>
+    <div class="img-modal-content animate-zoom">
+      <img id="img-modal-inner" style="width:100%">
+    </div>
+  </div>
+
   </body>
+
   /* Small navigation script */
   <script>
     window.onhashchange = function () {
@@ -188,6 +198,14 @@
         e.preventDefault()
       });
     });
+  </script>
+
+  /* Image highlight script */
+  <script>
+    function onClickImage(element) {
+      document.getElementById("img-modal-inner").src = element.src;
+      document.getElementById("img-modal").style.display = "block";
+    }
   </script>
 
   </html>
