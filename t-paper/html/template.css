@@ -45,6 +45,7 @@
 
 html {
     font-size: 100%;
+    scroll-behavior: smooth;
 }
 
 html, button, input, select, textarea {
@@ -400,7 +401,7 @@ body {
 }
 
 .page-header {
-    flex: 0 0 300px;
+    flex: 0 0 25%;
     order: 0;
     background-color: #474747;
     border-left: 1px solid #000;
@@ -410,7 +411,7 @@ body {
     overflow-y: auto;
 }
 
-#container {
+.container {
     flex: 1;
     order: 1;
     height: 100vh;
@@ -509,39 +510,38 @@ article {
     font-size: 15px;
 }
 
-$if(csl-css)$
-div.csl-bib-body { }
 div.csl-entry {
-  clear: both;
-$if(csl-entry-spacing)$
-  margin-bottom: $csl-entry-spacing$;
-$endif$
+    clear: both;
+    margin-bottom: 0.5em;
 }
+
 .hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
+    margin-left: 2em;
+    text-indent: -2em;
 }
+
 div.csl-left-margin {
-  min-width:2em;
-  float:left;
+    min-width: 2em;
+    float: left;
 }
+
 div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
+    margin-left: 2em;
+    padding-left: 1em;
 }
+
 div.csl-indent {
-  margin-left: 2em;
+    margin-left: 2em;
 }
-$endif$
 
 /* Other pandoc settings */
 
-$if(quotes)$
-q { quotes: "ÔÇ£" "ÔÇØ" "ÔÇÿ" "ÔÇÖ"; }
-$endif$
-$if(highlighting-css)$
-$highlighting-css$
-$endif$
-$if(displaymath-css)$
-.display.math{display: block; text-align: center; margin: 0.5rem auto;}
-$endif$
+q {
+    quotes: "ÔÇ£" "ÔÇØ" "ÔÇÿ" "ÔÇÖ";
+}
+
+.display.math {
+    display: block;
+    text-align: center;
+    margin: 0.5rem auto;
+}
