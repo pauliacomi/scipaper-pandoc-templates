@@ -50,7 +50,7 @@
     $-- so it doesn't get inlined (and thus broken) by the --self-contained option.
     <script type="text/javascript" id="MathJax-script" async
       src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-    </script>
+      </script>
     <script type="text/x-mathjax-config">
       MathJax.Ajax.config.path["mhchem"] = "https://cdnjs.cloudflare.com/ajax/libs/mathjax-mhchem/3.3.2";
       MathJax.Hub.Config({
@@ -100,7 +100,7 @@
       </header>
       $endif$
 
-      <div id="container">
+      <div class="container">
         <article typeof="ScholarlyArticle" vocab="http://schema.org/">
 
           <h1 property="headline">$title$</h1>
@@ -167,6 +167,47 @@
         </article>
       </div>
     </div>
+
+  /* Image display zoom modal */
+  <div id="img-modal" class="img-modal" onclick="this.style.display='none'">
+    <span class="button">&times;</span>
+    <div class="img-modal-content animate-zoom">
+      <img id="img-modal-inner" style="width:100%">
+    </div>
+  </div>
+
   </body>
+
+  /* Small navigation script */
+  <script>
+    window.onhashchange = function () {
+      hash = window.location.hash
+      let target = document.querySelector(hash)
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      })
+    }
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        let hashval = anchor.getAttribute('href')
+        let target = document.querySelector(hashval)
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        })
+        history.pushState(null, null, hashval)
+        e.preventDefault()
+      });
+    });
+  </script>
+
+  /* Image highlight script */
+  <script>
+    function onClickImage(element) {
+      document.getElementById("img-modal-inner").src = element.src;
+      document.getElementById("img-modal").style.display = "block";
+    }
+  </script>
 
   </html>
