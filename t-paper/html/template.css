@@ -508,3 +508,40 @@ article {
     line-height: 1.1;
     font-size: 15px;
 }
+
+$if(csl-css)$
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+$if(csl-entry-spacing)$
+  margin-bottom: $csl-entry-spacing$;
+$endif$
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+$endif$
+
+/* Other pandoc settings */
+
+$if(quotes)$
+q { quotes: "ÔÇ£" "ÔÇØ" "ÔÇÿ" "ÔÇÖ"; }
+$endif$
+$if(highlighting-css)$
+$highlighting-css$
+$endif$
+$if(displaymath-css)$
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+$endif$
