@@ -3,8 +3,8 @@
 
   <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <meta name="generator" content="pandoc">
 
     $for(author-meta)$
@@ -29,7 +29,7 @@
     $if(quotes)$
     <style type="text/css">
       q {
-        quotes: "“" "”" "‘" "’";
+        quotes: "“""”""‘""’";
       }
     </style>
     $endif$
@@ -74,29 +74,23 @@
     <div class="wrapper">
 
       $if(project)$
-      <header class="page-header">
-        <h1 class="header">$title$</h1>
-        <ul>
-          $if(project.zip-url)$
-          <li class="download"><a class="buttons" href="$project.zip-url$">Download ZIP</a></li>
-          $endif$
-          $if(project.github-url)$
-          <li><a class="buttons github" href="$project.github-url$">View On GitHub</a></li>
-          $endif$
-          $if(project.pdf-url)$
-          <li><a class="buttons pdf" href="$project.pdf-url$">Download PDF</a></li>
-          $endif$
-        </ul>
-        $if(project.maintainer)$
-        <p class="header">This project is maintained by $project.maintainer$</p>
-        $endif$
+      <header>
+        <div class="navbar-left">
+          <input type="checkbox" id="navbar-check">
+          <label for="navbar-check" class="navbar-hamburger">☰</label>
+          <div class="navbar-items">
+            <h1 class="header">$title$</h1>
+            <a class="button" href="manuscript.pdf">Download PDF</a>
+            <a class="button" href="manuscript-SI.pdf">Download SI PDF</a>
 
-        $if(toc)$
-        <nav id="$idprefix$TOC">
-          $toc$
-        </nav>
-        $endif$
+            $if(toc)$
+            <nav id="$idprefix$TOC">
+              $toc$
+            </nav>
+            $endif$
 
+          </div>
+        </div>
       </header>
       $endif$
 
@@ -168,17 +162,17 @@
       </div>
     </div>
 
-  /* Image display zoom modal */
-  <div id="img-modal" class="img-modal" onclick="this.style.display='none'">
-    <span class="button">&times;</span>
-    <div class="img-modal-content animate-zoom">
-      <img id="img-modal-inner" style="width:100%">
+  <!--  Image display zoom modal  -->
+    <div id="img-modal" class="img-modal" onclick="this.style.display='none'">
+      <span class="button">&times;</span>
+      <div class="img-modal-content animate-zoom">
+        <img id="img-modal-inner" style="width:100%">
+      </div>
     </div>
-  </div>
 
   </body>
 
-  /* Small navigation script */
+  <!--  Small navigation script  -->
   <script>
     window.onhashchange = function () {
       hash = window.location.hash
@@ -202,7 +196,7 @@
     });
   </script>
 
-  /* Image highlight script */
+  <!--  Image highlight script  -->
   <script>
     function onClickImage(element) {
       document.getElementById("img-modal-inner").src = element.src;
